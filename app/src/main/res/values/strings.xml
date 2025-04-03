@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">billPay</string>
+    <string name="intro">Menghitung bunga pinjaman untuk membantu
+        pengguna melihat total pinjaman dengam mudah </string>
+    <string name="total_hutang">Total Pinjaman</string>
+    <string name="lama_hutang">Berapa Lama Peminjaman</string>
+    <string name="bunga">Beberapa persen bunga pinjaman</string>
+    <string name="hitung">Hitung</string>
 </resources>
