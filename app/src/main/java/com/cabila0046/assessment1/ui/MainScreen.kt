@@ -27,6 +27,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringArrayResource
 import androidx.compose.ui.res.stringResource
@@ -76,7 +77,8 @@ fun ScreenContent(modifier: Modifier = Modifier) {
 
     Column(
         modifier = modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp),
-        verticalArrangement = Arrangement.spacedBy(8.dp)
+        verticalArrangement = Arrangement.spacedBy(8.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
             text = stringResource(id = R.string.intro),
@@ -151,15 +153,54 @@ fun ScreenContent(modifier: Modifier = Modifier) {
             )
         }
         Button(
-            onClick = {},
+            onClick = {
+                val loanAmount = loan.toDoubleOrNull() ?: 0.0
+                val interestRate = interest.toDoubleOrNull() ?: 0.0
+
+                val durationMonths = when {
+                    selectedChoose == "other" -> custom.toIntOrNull() ?: 0
+                    else -> selectedChoose.filter { it.isDigit() }.toIntOrNull() ?: 0
+                }
+
+                if (loanAmount == 0.0 || interestRate == 0.0 || durationMonths == 0) return@Button
+
+                val monthlyInterest = calculateMonthly(loanAmount, interestRate)
+                val totalInterest = calculateTotal(monthlyInterest, durationMonths)
+                val totalPayment = totalPayment(loanAmount, totalInterest)
+
+                resultText = """
+                Monthly Interest       : Rp ${"%,.0f".format(monthlyInterest)}
+                Total Interest         : Rp ${"%,.0f".format(totalInterest)}
+                Total Payment          : Rp ${"%,.0f".format(totalPayment)}
+                Payment Duration       : $durationMonths months
+                """.trimIndent()
+                },
             modifier = Modifier.padding(top = 8.dp),
             contentPadding = PaddingValues(horizontal = 32.dp, vertical = 16.dp)
         ) {
             Text(text = stringResource(R.string.hitung))
         }
-
+        if (resultText.isNotEmpty()) {
+            Text(text = resultText,
+                style = MaterialTheme.typography.bodyLarge,
+                modifier = Modifier.padding(top = 8.dp)
+            )
+        }
     }
 }
+
+fun calculateMonthly(amount: Double, ratePercent: Double): Double {
+    return amount * (ratePercent / 100)
+}
+
+fun calculateTotal(monthlyInterest: Double, months: Int): Double {
+    return monthlyInterest * months
+}
+
+fun totalPayment(amount: Double, totalInterest: Double): Double {
+    return amount + totalInterest
+}
+
 
 
 
