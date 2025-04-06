@@ -13,6 +13,8 @@
         <item>other</item>
     </string-array>
     <string name="hitung">Calculate</string>
+    <string name="input_invalid">Cannot be empty</string>
+
 
 
 

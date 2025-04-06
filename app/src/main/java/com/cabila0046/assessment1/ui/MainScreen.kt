@@ -11,11 +11,14 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material3.Button
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.ExposedDropdownMenuBox
 import androidx.compose.material3.ExposedDropdownMenuDefaults
+import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
@@ -64,11 +67,17 @@ fun MainScreen()  {
 @Composable
 fun ScreenContent(modifier: Modifier = Modifier) {
     var loan by remember { mutableStateOf(" ") }
+    var loanError by remember { mutableStateOf(false) }
+
     var interest by remember { mutableStateOf(" ") }
+    var interestError by remember { mutableStateOf(false) }
 
     val choose = stringArrayResource(id = R.array.pilih_item)
     var selectedChoose by remember { mutableStateOf(choose[0]) }
+
     var custom by remember { mutableStateOf("") }
+    var customError by remember { mutableStateOf(false) }
+
     var expanded by remember { mutableStateOf(false) }
 
     var resultText by remember { mutableStateOf("") }
@@ -76,7 +85,10 @@ fun ScreenContent(modifier: Modifier = Modifier) {
 
 
     Column(
-        modifier = modifier.fillMaxSize().verticalScroll(rememberScrollState()).padding(16.dp),
+        modifier = modifier
+            .fillMaxSize()
+            .verticalScroll(rememberScrollState())
+            .padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -88,7 +100,9 @@ fun ScreenContent(modifier: Modifier = Modifier) {
             value = loan,
             onValueChange = { loan = it },
             label = { Text(text = stringResource(R.string.total_hutang)) },
-            trailingIcon = { Text(text = " Rp ") },
+            trailingIcon = { IconPicker(loanError, "Rp") },
+            supportingText = { ErrorHint(loanError)},
+            isError = loanError,
             singleLine = true,
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Number,
@@ -100,7 +114,9 @@ fun ScreenContent(modifier: Modifier = Modifier) {
             value = interest,
             onValueChange = { interest = it },
             label = { Text(text = stringResource(R.string.bunga)) },
-            trailingIcon = { Text(text = " % ") },
+            trailingIcon = { IconPicker(interestError, " % ") },
+            supportingText = { ErrorHint(interestError)},
+            isError = interestError,
             singleLine = true,
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Number,
@@ -121,7 +137,7 @@ fun ScreenContent(modifier: Modifier = Modifier) {
                 modifier = Modifier
                     .menuAnchor()
                     .fillMaxWidth()
-                    .clickable{ expanded = true }
+                    .clickable { expanded = true }
             )
             ExposedDropdownMenu(
                 expanded = expanded,
@@ -143,7 +159,9 @@ fun ScreenContent(modifier: Modifier = Modifier) {
                 value = custom,
                 onValueChange = { custom = it },
                 label = { Text("Enter Duration") },
-                trailingIcon = { Text(" month ") },
+                trailingIcon = { IconPicker(customError, " month ") },
+                supportingText = { ErrorHint(customError)},
+                isError = customError,
                 singleLine = true,
                 keyboardOptions = KeyboardOptions(
                     keyboardType = KeyboardType.Number,
@@ -154,6 +172,11 @@ fun ScreenContent(modifier: Modifier = Modifier) {
         }
         Button(
             onClick = {
+                loanError = (loan == "" || loan == "0")
+                interestError = (interest == "" || interest == "0")
+                customError = (custom == "" || custom == "0")
+                if (loanError || interestError || customError) return@Button
+
                 val loanAmount = loan.toDoubleOrNull() ?: 0.0
                 val interestRate = interest.toDoubleOrNull() ?: 0.0
 
@@ -186,6 +209,22 @@ fun ScreenContent(modifier: Modifier = Modifier) {
                 modifier = Modifier.padding(top = 8.dp)
             )
         }
+    }
+}
+
+@Composable
+fun IconPicker(isError: Boolean, unit: String){
+    if (isError) {
+        Icon(imageVector = Icons.Filled.Warning, contentDescription = null)
+    } else {
+        Text(text = unit)
+    }
+}
+
+@Composable
+fun ErrorHint (isError: Boolean) {
+    if (isError) {
+        Text(text = stringResource(R.string.input_invalid))
     }
 }
 
