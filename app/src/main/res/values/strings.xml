@@ -14,10 +14,18 @@
     </string-array>
     <string name="hitung">Calculate</string>
     <string name="input_invalid">Cannot be empty</string>
+    <string name="bagikan">Bagikan</string>
+    <string name="bagikan_template">Monthly Interest : %1$s Rp\n Total Interest: %2$s Rp\n
+    Total Payment %3$s Rp\nPayment Duration: %4$s months</string>
+
+
    <string name="error">This field cannot be empty</string>
    <string name="tentang">Informasi</string>
    <string name="copy">aplikasi menghitung bunga pinjaman</string>
    <string name="kembali">Kembali</string>
+
+
+
 
 
 
