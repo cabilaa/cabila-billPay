@@ -75,8 +75,13 @@ fun ScreenContent(modifier: Modifier = Modifier) {
     val choose = stringArrayResource(id = R.array.pilih_item)
     var selectedChoose by remember { mutableStateOf(choose[0]) }
 
+
     var custom by remember { mutableStateOf("") }
     var customError by remember { mutableStateOf(false) }
+    val isOther = selectedChoose == "other"
+    val durationValue = if (isOther) custom else selectedChoose.filter { it.isDigit() }
+    customError = (durationValue.isBlank() || durationValue == "0")
+
 
     var expanded by remember { mutableStateOf(false) }
 
@@ -160,7 +165,10 @@ fun ScreenContent(modifier: Modifier = Modifier) {
                 onValueChange = { custom = it },
                 label = { Text("Enter Duration") },
                 trailingIcon = { IconPicker(customError, " month ") },
-                supportingText = { ErrorHint(customError)},
+                supportingText = { if(customError && selectedChoose == "other") {
+                                    Text(stringResource(R.string.error))
+                                    }
+                                 },
                 isError = customError,
                 singleLine = true,
                 keyboardOptions = KeyboardOptions(
@@ -174,8 +182,7 @@ fun ScreenContent(modifier: Modifier = Modifier) {
             onClick = {
                 loanError = (loan == "" || loan == "0")
                 interestError = (interest == "" || interest == "0")
-                customError = (custom == "" || custom == "0")
-                if (loanError || interestError || customError) return@Button
+                if (loanError || interestError || customError ) return@Button
 
                 val loanAmount = loan.toDoubleOrNull() ?: 0.0
                 val interestRate = interest.toDoubleOrNull() ?: 0.0
@@ -198,6 +205,8 @@ fun ScreenContent(modifier: Modifier = Modifier) {
                 Payment Duration       : $durationMonths months
                 """.trimIndent()
                 },
+
+
             modifier = Modifier.padding(top = 8.dp),
             contentPadding = PaddingValues(horizontal = 32.dp, vertical = 16.dp)
         ) {
@@ -239,7 +248,6 @@ fun calculateTotal(monthlyInterest: Double, months: Int): Double {
 fun totalPayment(amount: Double, totalInterest: Double): Double {
     return amount + totalInterest
 }
-
 
 
 

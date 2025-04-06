@@ -14,7 +14,7 @@
     </string-array>
     <string name="hitung">Calculate</string>
     <string name="input_invalid">Cannot be empty</string>
-
+   <string name="error">This field cannot be empty</string>
 
 
 
