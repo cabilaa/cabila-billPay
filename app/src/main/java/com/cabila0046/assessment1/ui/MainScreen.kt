@@ -30,7 +30,7 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -40,7 +40,6 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.cabila0046.assessment1.R
@@ -82,26 +81,26 @@ fun MainScreen(navController: NavHostController)  {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ScreenContent(modifier: Modifier = Modifier) {
-    var loan by remember { mutableStateOf("") }
-    var loanError by remember { mutableStateOf(false) }
+    var loan by rememberSaveable { mutableStateOf("") }
+    var loanError by rememberSaveable { mutableStateOf(false) }
 
-    var interest by remember { mutableStateOf("") }
-    var interestError by remember { mutableStateOf(false) }
+    var interest by rememberSaveable { mutableStateOf("") }
+    var interestError by rememberSaveable { mutableStateOf(false) }
 
     val choose = stringArrayResource(id = R.array.pilih_item)
-    var selectedChoose by remember { mutableStateOf(choose[0]) }
+    var selectedChoose by rememberSaveable { mutableStateOf(choose[0]) }
 
 
-    var custom by remember { mutableStateOf("") }
-    var customError by remember { mutableStateOf(false) }
+    var custom by rememberSaveable { mutableStateOf("") }
+    var customError by rememberSaveable { mutableStateOf(false) }
     val isOther = selectedChoose == "other"
     val durationValue = if (isOther) custom else selectedChoose.filter { it.isDigit() }
     customError = (durationValue.isBlank() || durationValue == "0")
 
 
-    var expanded by remember { mutableStateOf(false) }
+    var expanded by rememberSaveable { mutableStateOf(false) }
 
-    var resultText by remember { mutableStateOf("") }
+    var resultText by rememberSaveable { mutableStateOf("") }
 
 
 
