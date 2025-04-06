@@ -66,10 +66,10 @@ fun MainScreen()  {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ScreenContent(modifier: Modifier = Modifier) {
-    var loan by remember { mutableStateOf(" ") }
+    var loan by remember { mutableStateOf("") }
     var loanError by remember { mutableStateOf(false) }
 
-    var interest by remember { mutableStateOf(" ") }
+    var interest by remember { mutableStateOf("") }
     var interestError by remember { mutableStateOf(false) }
 
     val choose = stringArrayResource(id = R.array.pilih_item)
