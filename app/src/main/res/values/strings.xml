@@ -21,8 +21,11 @@
 
    <string name="error">This field cannot be empty</string>
    <string name="tentang">Informasi</string>
+    <string name="caption">bill pay</string>
    <string name="copy">aplikasi menghitung bunga pinjaman</string>
    <string name="kembali">Kembali</string>
+
+
 
 
 

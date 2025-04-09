@@ -113,6 +113,7 @@ fun ScreenContent(modifier: Modifier = Modifier) {
 
 
 
+
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -190,7 +191,7 @@ fun ScreenContent(modifier: Modifier = Modifier) {
                 label = { Text("Enter Duration") },
                 trailingIcon = { IconPicker(customError, " month ") },
                 supportingText = { if(customError && selectedChoose == "other") {
-                                    Text(stringResource(R.string.error))
+                                    Text(stringResource(R.string.input_invalid))
                                     }
                                  },
                 isError = customError,
@@ -206,13 +207,11 @@ fun ScreenContent(modifier: Modifier = Modifier) {
             onClick = {
                 loanError = (loan == "" || loan == "0")
                 interestError = (interest == "" || interest == "0")
+                customError = (custom == "" || custom == "0")
                 if (loanError || interestError || customError ) return@Button
 
                 val loanAmount = loan.toDoubleOrNull() ?: 0.0
                 val interestRate = interest.toDoubleOrNull() ?: 0.0
-
-
-
 
                 val durationMonths = when {
                     selectedChoose == "other" -> custom.toIntOrNull() ?: 0
