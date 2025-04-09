@@ -69,7 +69,7 @@ fun MainScreen(navController: NavHostController)  {
                     }) {
                         Icon(
                             imageVector = Icons.Outlined.Info,
-                            contentDescription = stringResource(R.string.tentang),
+                            contentDescription = stringResource(R.string.about),
                             tint = MaterialTheme.colorScheme.primary
                         )
                     }
@@ -90,7 +90,7 @@ fun ScreenContent(modifier: Modifier = Modifier) {
     var interest by rememberSaveable { mutableStateOf("") }
     var interestError by rememberSaveable { mutableStateOf(false) }
 
-    val choose = stringArrayResource(id = R.array.pilih_item)
+    val choose = stringArrayResource(id = R.array.select_items)
     var selectedChoose by rememberSaveable { mutableStateOf(choose[0]) }
 
 
@@ -123,13 +123,13 @@ fun ScreenContent(modifier: Modifier = Modifier) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            text = stringResource(id = R.string.intro),
+            text = stringResource(id = R.string.intro_app),
             style = MaterialTheme.typography.bodyLarge,
         )
         OutlinedTextField(
             value = loan,
             onValueChange = { loan = it },
-            label = { Text(text = stringResource(R.string.total_hutang)) },
+            label = { Text(text = stringResource(R.string.total_loan)) },
             trailingIcon = { IconPicker(loanError, "Rp") },
             supportingText = { ErrorHint(loanError)},
             isError = loanError,
@@ -143,7 +143,7 @@ fun ScreenContent(modifier: Modifier = Modifier) {
         OutlinedTextField(
             value = interest,
             onValueChange = { interest = it },
-            label = { Text(text = stringResource(R.string.bunga)) },
+            label = { Text(text = stringResource(R.string.interest)) },
             trailingIcon = { IconPicker(interestError, " % ") },
             supportingText = { ErrorHint(interestError)},
             isError = interestError,
@@ -162,7 +162,7 @@ fun ScreenContent(modifier: Modifier = Modifier) {
                 value = selectedChoose,
                 onValueChange = {},
                 readOnly = true,
-                label = { Text(stringResource(R.string.pilih)) },
+                label = { Text(stringResource(R.string.choose)) },
                 trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded) },
                 modifier = Modifier
                     .menuAnchor()
@@ -188,7 +188,7 @@ fun ScreenContent(modifier: Modifier = Modifier) {
             OutlinedTextField(
                 value = custom,
                 onValueChange = { custom = it },
-                label = { Text("Enter Duration") },
+                label = { Text(text = stringResource(R.string.lama_duration)) },
                 trailingIcon = { IconPicker(customError, " month ") },
                 supportingText = { if(customError && selectedChoose == "other") {
                                     Text(stringResource(R.string.input_invalid))
@@ -232,7 +232,7 @@ fun ScreenContent(modifier: Modifier = Modifier) {
                 """.trimIndent()
 
                 message = context.getString(
-                    R.string.bagikan_template,
+                    R.string.share_template,
                     "%,.0f".format(monthlyInterest),
                     "%,.0f".format(totalInterest),
                     "%,.0f".format(totalPayment),
@@ -244,7 +244,7 @@ fun ScreenContent(modifier: Modifier = Modifier) {
             modifier = Modifier.padding(top = 8.dp),
             contentPadding = PaddingValues(horizontal = 32.dp, vertical = 16.dp)
         ) {
-            Text(text = stringResource(R.string.hitung))
+            Text(text = stringResource(R.string.count))
         }
         if (resultText.isNotEmpty()) {
             Text(text = resultText,
@@ -258,7 +258,7 @@ fun ScreenContent(modifier: Modifier = Modifier) {
                 modifier = Modifier.padding(top = 8.dp),
                 contentPadding = PaddingValues(horizontal = 32.dp, vertical = 16.dp)
             ) {
-                Text(text = stringResource(R.string.bagikan))
+                Text(text = stringResource(R.string.share))
             }
 
         }

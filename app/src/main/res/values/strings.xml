@@ -1,29 +1,34 @@
 <resources>
     <string name="app_name">billPay</string>
-    <string name="intro">Calculating loan interest to help users easily see the total loan amount</string>
-    <string name="total_hutang">Total Loan</string>
-    <string name="lama_hutang">Loan Duration</string>
-    <string name="bunga">Loan Interest Percentage</string>
-    <string name="pilih">Loan Term</string>
-    <string-array name="pilih_item">
+    <string name="intro_app">Calculating loan interest to help users easily see the total loan amount</string>
+    <string name="total_loan">Total Loan</string>
+    <string name="lama_duration">Loan Duration</string>
+    <string name="interest">Loan Interest Percentage</string>
+    <string name="choose">Loan Term</string>
+    <string-array name="select_items">
         <item>6 months</item>
         <item>12 months</item>
         <item>18 months</item>
         <item>24 months</item>
         <item>other</item>
     </string-array>
-    <string name="hitung">Calculate</string>
+    <string name="count">Calculate</string>
     <string name="input_invalid">Cannot be empty</string>
-    <string name="bagikan">Bagikan</string>
-    <string name="bagikan_template">Monthly Interest : %1$s Rp\n Total Interest: %2$s Rp\n
+    <string name="share">Share</string>
+    <string name="share_template">Monthly Interest : %1$s Rp\n Total Interest: %2$s Rp\n
     Total Payment %3$s Rp\nPayment Duration: %4$s months</string>
-
-
    <string name="error">This field cannot be empty</string>
-   <string name="tentang">Informasi</string>
-    <string name="caption">bill pay</string>
-   <string name="copy">aplikasi menghitung bunga pinjaman</string>
-   <string name="kembali">Kembali</string>
+   <string name="about">App Info</string>
+    <string name="caption">Loan Interest App </string>
+   <string name="copyright">Bill Pay is an application designed to calculate fixed interest (flat rate).
+Fixed interest is a type of loan interest where the monthly amount remains constant and does not change throughout the loan period.\n\n
+       Formula Used:\n
+       Monthly Interest = Loan × (Interest / 100)\n
+        Total Interest = Monthly Interest × Duration\n
+        Total Debt = Loan + Total Interest\n\n
+        This application was developed for Assessment 1 of Mobile Programming.\n
+        Copyright © 2024-2025 cabila.\n All rights reserved.</string>
+   <string name="back">Return</string>
 
 
 

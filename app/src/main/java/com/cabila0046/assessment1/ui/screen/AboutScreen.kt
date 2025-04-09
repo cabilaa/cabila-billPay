@@ -4,6 +4,7 @@ import android.content.res.Configuration
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -23,11 +24,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.cabila0046.assessment1.R
+import com.cabila0046.assessment1.ui.ScreenContent
 import com.cabila0046.assessment1.ui.theme.Assessment1Theme
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -40,49 +44,64 @@ fun AboutScreen(navController: NavHostController)  {
                     IconButton(onClick = { navController.popBackStack() }) {
                         Icon(
                             imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                            contentDescription = stringResource(R.string.kembali),
+                            contentDescription = stringResource(R.string.back),
                             tint = MaterialTheme.colorScheme.primary
                         )
                     }
                 },
                 title = {
-                    Text(text = stringResource(id = R.string.tentang))
+                    Text(text = stringResource(id = R.string.about))
                 },
                 colors = TopAppBarDefaults.mediumTopAppBarColors(
                     containerColor = MaterialTheme.colorScheme.primaryContainer,
                     titleContentColor = MaterialTheme.colorScheme.primary,
-                )
-
-
-            )
+                ))
             Column(
-
-                modifier = Modifier.fillMaxSize().padding(16.dp),
+                modifier = Modifier.fillMaxSize().padding(24.dp),
                 verticalArrangement = Arrangement.Center,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Image(
                     painter = painterResource(id = R.drawable.logo),
-                    contentDescription = stringResource(R.string.caption)
+                    contentDescription = stringResource(R.string.caption),
+                    modifier = Modifier.height(140.dp).padding(bottom = 8.dp)
+
+                )
+                Text(
+                    text = stringResource(id = R.string.caption),
+                    style = MaterialTheme.typography.bodyMedium,
+                    fontWeight = FontWeight.Bold,
+                    textAlign = TextAlign.Center,
+
+                )
+                Spacer(modifier = Modifier.height(12.dp))
+
+                Text(
+                    text = stringResource(R.string.copyright),
+                    textAlign = TextAlign.Start,
+                    modifier = Modifier.fillMaxWidth().padding(16.dp),
 
 
                 )
+
+
+
 
             }
 
         }
     ) { innerPadding ->
-        Text(text = stringResource(R.string.copy),
-            modifier = Modifier.padding(innerPadding).padding(16.dp))
+            ScreenContent(Modifier.padding(innerPadding))
+        }
 
-    }
 
-}
 
-@Composable
-fun ScreenContent (modifier: Modifier = Modifier) {
+
+
 
 }
+
+
 
 
 @Preview(showBackground = true)
