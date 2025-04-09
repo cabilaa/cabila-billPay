@@ -9,7 +9,6 @@ import com.cabila0046.assessment1.Screen
 import com.cabila0046.assessment1.ui.MainScreen
 import com.cabila0046.assessment1.ui.screen.AboutScreen
 
-
 @Composable
 fun SetupNavGraph(navController: NavHostController = rememberNavController()) {
     NavHost(

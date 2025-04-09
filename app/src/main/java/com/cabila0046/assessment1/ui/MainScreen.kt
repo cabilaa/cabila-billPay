@@ -244,8 +244,6 @@ fun ScreenContent(modifier: Modifier = Modifier) {
                 style = MaterialTheme.typography.bodyLarge,
                 modifier = Modifier.padding(top = 8.dp)
             )
-
-
         }
         Button(
             onClick = {
@@ -256,13 +254,26 @@ fun ScreenContent(modifier: Modifier = Modifier) {
         ) {
             Text(text = stringResource(R.string.share))
         }
+        Button(
+            onClick = {
+                loan = ""
+                interest = ""
+                selectedChoose = choose[0]
+                custom = ""
 
+                loanError = false
+                interestError = false
+                customError = false
+
+                resultText = ""
+                message = ""
+            },
+            contentPadding = PaddingValues(horizontal = 32.dp, vertical = 8.dp)
+        ) {
+            Text(text = stringResource(R.string.reset))
         }
-
-
+        }
     }
-
-
 @Composable
 fun IconPicker(isError: Boolean, unit: String){
     if (isError) {
@@ -299,9 +310,7 @@ private fun shareData (context: Context, message: String) {
     if (shareIntent.resolveActivity(context.packageManager) != null){
         context.startActivity(shareIntent)
     }
-
 }
-
 
 @Preview(showBackground = true)
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, showBackground = true)
