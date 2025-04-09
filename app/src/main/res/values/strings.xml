@@ -29,6 +29,7 @@ Fixed interest is a type of loan interest where the monthly amount remains const
         This application was developed for Assessment 1 of Mobile Programming.\n
         Copyright © 2024-2025 cabila.\n All rights reserved.</string>
    <string name="back">Return</string>
+   <string name="reset">Reset</string>
 
 
 

@@ -5,10 +5,11 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -31,7 +32,6 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.cabila0046.assessment1.R
-import com.cabila0046.assessment1.ui.ScreenContent
 import com.cabila0046.assessment1.ui.theme.Assessment1Theme
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -56,53 +56,37 @@ fun AboutScreen(navController: NavHostController)  {
                     containerColor = MaterialTheme.colorScheme.primaryContainer,
                     titleContentColor = MaterialTheme.colorScheme.primary,
                 ))
-            Column(
-                modifier = Modifier.fillMaxSize().padding(24.dp),
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                Image(
-                    painter = painterResource(id = R.drawable.logo),
-                    contentDescription = stringResource(R.string.caption),
-                    modifier = Modifier.height(140.dp).padding(bottom = 8.dp)
-
-                )
-                Text(
-                    text = stringResource(id = R.string.caption),
-                    style = MaterialTheme.typography.bodyMedium,
-                    fontWeight = FontWeight.Bold,
-                    textAlign = TextAlign.Center,
-
-                )
-                Spacer(modifier = Modifier.height(12.dp))
-
-                Text(
-                    text = stringResource(R.string.copyright),
-                    textAlign = TextAlign.Start,
-                    modifier = Modifier.fillMaxWidth().padding(16.dp),
-
-
-                )
-
-
-
-
-            }
 
         }
     ) { innerPadding ->
-            ScreenContent(Modifier.padding(innerPadding))
+        val scrollState = rememberScrollState()
+        Column(
+            modifier = Modifier.padding(innerPadding).verticalScroll(scrollState),
+            verticalArrangement = Arrangement.Center,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Image(
+                painter = painterResource(id = R.drawable.logo),
+                contentDescription = stringResource(R.string.caption),
+                modifier = Modifier.height(140.dp).padding(bottom = 8.dp).padding(top = 16.dp)
+            )
+            Text(
+                text = stringResource(id = R.string.caption),
+                style = MaterialTheme.typography.bodyMedium,
+                fontWeight = FontWeight.Bold,
+                textAlign = TextAlign.Center,
+
+                )
+            Spacer(modifier = Modifier.height(12.dp))
+
+            Text(
+                text = stringResource(R.string.copyright),
+                textAlign = TextAlign.Start,
+                modifier = Modifier.fillMaxWidth().padding(16.dp).padding(top = 16.dp),
+                )
         }
-
-
-
-
-
-
+    }
 }
-
-
-
 
 @Preview(showBackground = true)
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, showBackground = true)

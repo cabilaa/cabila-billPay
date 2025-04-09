@@ -108,12 +108,6 @@ fun ScreenContent(modifier: Modifier = Modifier) {
     var message by rememberSaveable { mutableStateOf("") }
 
 
-
-
-
-
-
-
     Column(
         modifier = modifier
             .fillMaxSize()
@@ -207,8 +201,8 @@ fun ScreenContent(modifier: Modifier = Modifier) {
             onClick = {
                 loanError = (loan == "" || loan == "0")
                 interestError = (interest == "" || interest == "0")
-                customError = (custom == "" || custom == "0")
-                if (loanError || interestError || customError ) return@Button
+
+                if (loanError || interestError  ) return@Button
 
                 val loanAmount = loan.toDoubleOrNull() ?: 0.0
                 val interestRate = interest.toDoubleOrNull() ?: 0.0
@@ -240,7 +234,6 @@ fun ScreenContent(modifier: Modifier = Modifier) {
                 )
                 },
 
-
             modifier = Modifier.padding(top = 8.dp),
             contentPadding = PaddingValues(horizontal = 32.dp, vertical = 16.dp)
         ) {
@@ -251,18 +244,21 @@ fun ScreenContent(modifier: Modifier = Modifier) {
                 style = MaterialTheme.typography.bodyLarge,
                 modifier = Modifier.padding(top = 8.dp)
             )
-            Button(
-                onClick = {
-                    shareData(context, message)
-                },
-                modifier = Modifier.padding(top = 8.dp),
-                contentPadding = PaddingValues(horizontal = 32.dp, vertical = 16.dp)
-            ) {
-                Text(text = stringResource(R.string.share))
-            }
+
 
         }
+        Button(
+            onClick = {
+                shareData(context, message)
+            },
+            modifier = Modifier.padding(top = 50.dp),
+            contentPadding = PaddingValues(horizontal = 32.dp, vertical = 8.dp)
+        ) {
+            Text(text = stringResource(R.string.share))
         }
+
+        }
+
 
     }
 
