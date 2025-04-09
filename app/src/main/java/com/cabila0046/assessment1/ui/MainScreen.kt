@@ -182,7 +182,7 @@ fun ScreenContent(modifier: Modifier = Modifier) {
             OutlinedTextField(
                 value = custom,
                 onValueChange = { custom = it },
-                label = { Text(text = stringResource(R.string.lama_duration)) },
+                label = { Text(text = stringResource(R.string.loan_duration)) },
                 trailingIcon = { IconPicker(customError, " month ") },
                 supportingText = { if(customError && selectedChoose == "other") {
                                     Text(stringResource(R.string.input_invalid))

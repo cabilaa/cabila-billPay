@@ -1,10 +1,8 @@
 <resources>
     <string name="app_name">billPay</string>
     <string name="intro_app">Calculating loan interest to help users easily see the total loan amount</string>
-    <string name="total_loan">Total Loan</string>
-    <string name="lama_duration">Loan Duration</string>
+    <string name="loan_duration">Loan Duration</string>
     <string name="interest">Loan Interest Percentage</string>
-    <string name="choose">Loan Term</string>
     <string-array name="select_items">
         <item>6 months</item>
         <item>12 months</item>
@@ -30,16 +28,8 @@ Fixed interest is a type of loan interest where the monthly amount remains const
         Copyright © 2024-2025 cabila.\n All rights reserved.</string>
    <string name="back">Return</string>
    <string name="reset">Reset</string>
-
-
-
-
-
-
-
-
-
-
+    <string name="choose">Loan Tearm</string>
+    <string name="total_loan">Total Loan</string>
 
 
 </resources>
