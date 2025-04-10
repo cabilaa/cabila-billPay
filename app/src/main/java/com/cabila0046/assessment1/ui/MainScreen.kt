@@ -37,7 +37,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.stringArrayResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
@@ -84,29 +83,32 @@ fun MainScreen(navController: NavHostController)  {
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ScreenContent(modifier: Modifier = Modifier) {
+    val context = LocalContext.current
+
     var loan by rememberSaveable { mutableStateOf("") }
     var loanError by rememberSaveable { mutableStateOf(false) }
 
     var interest by rememberSaveable { mutableStateOf("") }
     var interestError by rememberSaveable { mutableStateOf(false) }
 
-    val choose = stringArrayResource(id = R.array.select_items)
+    val choose = listOf(
+        stringResource(R.string.month_6),
+        stringResource(R.string.month_12),
+        stringResource(R.string.month_18),
+        stringResource(R.string.month_24),
+        stringResource(R.string.other)
+    )
     var selectedChoose by rememberSaveable { mutableStateOf(choose[0]) }
-
-
     var custom by rememberSaveable { mutableStateOf("") }
     var customError by rememberSaveable { mutableStateOf(false) }
-    val isOther = selectedChoose == "other"
-    val durationValue = if (isOther) custom else selectedChoose.filter { it.isDigit() }
-    customError = (durationValue.isBlank() || durationValue == "0")
+    val isOther = selectedChoose == stringResource(R.string.other)
+
 
 
     var expanded by rememberSaveable { mutableStateOf(false) }
-
     var resultText by rememberSaveable { mutableStateOf("") }
-    val context = LocalContext.current
-    var message by rememberSaveable { mutableStateOf("") }
 
+    var message by rememberSaveable { mutableStateOf("") }
 
     Column(
         modifier = modifier
@@ -178,15 +180,15 @@ fun ScreenContent(modifier: Modifier = Modifier) {
                 }
             }
         }
-        if (selectedChoose == "other") {
+        if (isOther) {
             OutlinedTextField(
                 value = custom,
                 onValueChange = { custom = it },
                 label = { Text(text = stringResource(R.string.loan_duration)) },
                 trailingIcon = { IconPicker(customError, " month ") },
-                supportingText = { if(customError && selectedChoose == "other") {
+                supportingText = { if (customError) {
                                     Text(stringResource(R.string.input_invalid))
-                                    }
+                                }
                                  },
                 isError = customError,
                 singleLine = true,
@@ -202,15 +204,14 @@ fun ScreenContent(modifier: Modifier = Modifier) {
                 loanError = (loan == "" || loan == "0")
                 interestError = (interest == "" || interest == "0")
 
+                val durationValue = if (isOther) custom else selectedChoose.filter { it.isDigit() }
+                customError = isOther && (durationValue.isBlank() || durationValue == "0")
+
                 if (loanError || interestError  ) return@Button
 
                 val loanAmount = loan.toDoubleOrNull() ?: 0.0
                 val interestRate = interest.toDoubleOrNull() ?: 0.0
-
-                val durationMonths = when {
-                    selectedChoose == "other" -> custom.toIntOrNull() ?: 0
-                    else -> selectedChoose.filter { it.isDigit() }.toIntOrNull() ?: 0
-                }
+                val durationMonths = durationValue.toIntOrNull() ?: 0
 
                 if (loanAmount == 0.0 || interestRate == 0.0 || durationMonths == 0) return@Button
 
@@ -218,12 +219,13 @@ fun ScreenContent(modifier: Modifier = Modifier) {
                 val totalInterest = calculateTotal(monthlyInterest, durationMonths)
                 val totalPayment = totalPayment(loanAmount, totalInterest)
 
-                resultText = """
-                Monthly Interest       : Rp ${"%,.0f".format(monthlyInterest)}
-                Total Interest         : Rp ${"%,.0f".format(totalInterest)}
-                Total Payment          : Rp ${"%,.0f".format(totalPayment)}
-                Payment Duration       : $durationMonths months
-                """.trimIndent()
+                resultText = context.getString(
+                    R.string.share_template,
+                    "%,.0f".format(monthlyInterest),
+                    "%,.0f".format(totalInterest),
+                    "%,.0f".format(totalPayment),
+                    durationMonths.toString()
+                )
 
                 message = context.getString(
                     R.string.share_template,
@@ -233,18 +235,19 @@ fun ScreenContent(modifier: Modifier = Modifier) {
                     durationMonths.toString()
                 )
                 },
-
             modifier = Modifier.padding(top = 8.dp),
-            contentPadding = PaddingValues(horizontal = 32.dp, vertical = 16.dp)
+            contentPadding = PaddingValues(horizontal = 32.dp, vertical = 16.dp),
         ) {
             Text(text = stringResource(R.string.count))
         }
-        if (resultText.isNotEmpty()) {
-            Text(text = resultText,
-                style = MaterialTheme.typography.bodyLarge,
-                modifier = Modifier.padding(top = 8.dp)
-            )
-        }
+        if (resultText.isNotBlank()) {
+                Text(
+                    text = resultText,
+                    style = MaterialTheme.typography.bodyMedium,
+                    modifier = Modifier.padding(top = 16.dp),
+
+                    )
+            }
         Button(
             onClick = {
                 shareData(context, message)
@@ -274,6 +277,7 @@ fun ScreenContent(modifier: Modifier = Modifier) {
         }
         }
     }
+
 @Composable
 fun IconPicker(isError: Boolean, unit: String){
     if (isError) {

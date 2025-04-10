@@ -1,21 +1,21 @@
 <resources>
     <string name="app_name">billPay</string>
-    <string name="intro_app">Calculating loan interest to help users easily see the total loan amount</string>
+    <string name="intro_app">This app helps you calculate loan interest quickly and accurately</string>
     <string name="loan_duration">Loan Duration</string>
     <string name="interest">Loan Interest Percentage</string>
-    <string-array name="select_items">
-        <item>6 months</item>
-        <item>12 months</item>
-        <item>18 months</item>
-        <item>24 months</item>
-        <item>other</item>
-    </string-array>
+    <string name="month_6">6 months</string>
+    <string name="month_12">12 months</string>
+    <string name="month_18">18 months</string>
+    <string name="month_24">24 months</string>
+    <string name="other">other</string>
     <string name="count">Calculate</string>
     <string name="input_invalid">Cannot be empty</string>
     <string name="share">Share</string>
-    <string name="share_template">Monthly Interest : %1$s Rp\n Total Interest: %2$s Rp\n
-    Total Payment %3$s Rp\nPayment Duration: %4$s months</string>
-   <string name="error">This field cannot be empty</string>
+    <string name="share_template">
+        Monthly Interest:Rp %1$s \n
+        Total Interest  :Rp %2$s \n
+        Total Payment   :Rp %3$s \n
+        Payment Duration:Rp %4$s months</string>
    <string name="about">App Info</string>
     <string name="caption">Loan Interest App </string>
    <string name="copyright">Bill Pay is an application designed to calculate fixed interest (flat rate).
@@ -30,6 +30,5 @@ Fixed interest is a type of loan interest where the monthly amount remains const
    <string name="reset">Reset</string>
     <string name="choose">Loan Tearm</string>
     <string name="total_loan">Total Loan</string>
-
 
 </resources>

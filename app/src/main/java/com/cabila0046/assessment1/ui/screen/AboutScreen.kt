@@ -56,7 +56,6 @@ fun AboutScreen(navController: NavHostController)  {
                     containerColor = MaterialTheme.colorScheme.primaryContainer,
                     titleContentColor = MaterialTheme.colorScheme.primary,
                 ))
-
         }
     ) { innerPadding ->
         val scrollState = rememberScrollState()

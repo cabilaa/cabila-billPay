@@ -1,19 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">billPay</string>
+    <string name="other">Lainnya</string>
     <string name="count">"Hitung "</string>
-    <string name="copyright">Bill Pay adalah aplikasi yang dirancang untuk menghitung bunga tetap (flat rate). Bunga tetap adalah jenis bunga pinjaman di mana jumlah bulanan tetap konstan dan tidak berubah sepanjang periode pinjaman.    Rumus yang Digunakan:     Bunga Bulanan = Pinjaman × (Bunga / 100)     Total Bunga = Bunga Bulanan × Durasi  Total Hutang = Pinjaman + Total Bunga    Aplikasi ini dikembangkan untuk Tugas 1 Mata Kuliah Pemrograman Mobile.    Hak Cipta © 2024-2025 cabila.   Seluruh hak cipta dilindungi.</string>
+    <string name="copyright">Bill Pay adalah aplikasi yang dirancang untuk menghitung bunga tetap (flat rate).
+        Bunga tetap adalah jenis bunga pinjaman di mana jumlah bulanan tetap konstan dan tidak berubah sepanjang periode pinjaman. \n\n
+        Rumus yang Digunakan:\n
+        Bunga Bulanan = Pinjaman × (Bunga / 100)\n
+        Total Bunga = Bunga Bulanan × Durasi\n
+        Total Hutang = Pinjaman + Total Bunga\n\n
+        Aplikasi ini dikembangkan untuk Assessment1 Mata Kuliah Pemrograman Mobile.\n
+        Hak Cipta © 2024-2025 cabila.\n Seluruh hak cipta dilindungi.</string>
     <string name="back">Kembali</string>
     <string name="reset">Atur Ulang</string>
     <string name="about">Info Aplikasi</string>
     <string name="caption">Aplikasi Bunga Pinjaman</string>
     <string name="input_invalid">Tidak boleh kosong</string>
     <string name="share">Bagikan</string>
-    <string name="share_template">Bunga Bulanan : %1s Rp Total Bunga: %2s Rp  Total Pembayaran %3s Rp Durasi Pembayaran: %4s bulan</string>
-    <string name="error">Kolom ini tidak boleh kosong</string>
+    <string name="share_template">
+        Bunga Bulanan    :Rp %1$s \n
+        Total Bunga      :Rp %2$s \n
+        Total Pembayaran :Rp %3$s \n
+        Durasi Pembayaran:Rp %4$s bulan</string>
     <string name="loan_duration">Durasi Pinjaman</string>
-    <string name="interest">\tPersentase Bunga Pinjaman</string>
-    <string name="intro_app">Total Pinjaman</string>
-    <string name="choose">Jangka Waktu Pinjaman</string>
+    <string name="interest">Bunga Pinjaman</string>
+    <string name="intro_app">Aplikasi ini membantu kita menghitung bunga pinjaman dengan cepat dan akurat</string>
+    <string name="choose">Waktu Pinjaman</string>
     <string name="total_loan">Total Pinjaman</string>
+    <string name="month_6">6 Bulan</string>
+    <string name="month_12">12 Bulan</string>
+    <string name="month_18">18 Bulan</string>
+    <string name="month_24">24 Bulan</string>
+
 </resources>
