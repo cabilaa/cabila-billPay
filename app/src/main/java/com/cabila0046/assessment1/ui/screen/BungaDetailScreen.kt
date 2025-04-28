@@ -36,9 +36,11 @@ import androidx.navigation.compose.rememberNavController
 import com.cabila0046.assessment1.R
 import com.cabila0046.assessment1.ui.theme.Assessment1Theme
 
+const val KEY_ID_PINJAMAN = "idPinjaman"
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun BungaDetailScreen(navController: NavHostController){
+fun BungaDetailScreen(navController: NavHostController, id: Long? = null){
     var nama by remember { mutableStateOf("") }
     var lama by remember { mutableStateOf("") }
     var bunga by remember { mutableStateOf("") }
@@ -57,7 +59,10 @@ fun BungaDetailScreen(navController: NavHostController){
                     }
                 },
                 title = {
+                    if (id == null)
                     Text(text = stringResource(id = R.string.add_loan))
+                    else
+                        Text(text = stringResource(id = R.string.edit_loan))
                 },
                 colors = TopAppBarDefaults.mediumTopAppBarColors(
                     containerColor = MaterialTheme.colorScheme.primaryContainer,

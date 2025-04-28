@@ -93,14 +93,13 @@ fun BungaScreen (navController: NavHostController)  {
             }
         }
     ) { innerPadding ->
-        BungaContent(Modifier.padding(innerPadding))
+        BungaContent(Modifier.padding(innerPadding), navController)
     }
 }
 @Composable
-fun BungaContent(modifier: Modifier = Modifier) {
+fun BungaContent(modifier: Modifier = Modifier, navController: NavHostController) {
     val viewModel: MainViewModel = viewModel()
     val data = viewModel.data
-    val context = LocalContext.current
 
 
     if (data.isEmpty()) {
@@ -121,8 +120,7 @@ fun BungaContent(modifier: Modifier = Modifier) {
         ) {
             items(data) {
                 ListItem(pinjaman = it) {
-                    val pesan = context.getString(R.string.click_on, it.nama)
-                    Toast.makeText(context, pesan, Toast.LENGTH_SHORT).show()
+                    navController.navigate(Screen.FormUbah.withId(it.id))
                 }
                 HorizontalDivider()
             }
