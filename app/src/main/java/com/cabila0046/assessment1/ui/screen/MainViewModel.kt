@@ -21,6 +21,10 @@ class MainViewModel : ViewModel() {
             "8%",
             "6 bulan",
             "2025-06-03 10:34:3"
-        ),
+        )
+
     )
+    fun getPinjaman(id: Long): Pinjaman? {
+        return data.find { it.id == id }
+    }
 }

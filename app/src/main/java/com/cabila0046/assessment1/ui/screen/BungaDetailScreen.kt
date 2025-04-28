@@ -20,6 +20,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -31,6 +32,7 @@ import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.cabila0046.assessment1.R
@@ -41,10 +43,22 @@ const val KEY_ID_PINJAMAN = "idPinjaman"
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun BungaDetailScreen(navController: NavHostController, id: Long? = null){
+    val viewModel: MainViewModel = viewModel()
+
     var nama by remember { mutableStateOf("") }
-    var lama by remember { mutableStateOf("") }
+    var total by remember { mutableStateOf("") }
     var bunga by remember { mutableStateOf("") }
     var selectedChoose by remember { mutableStateOf("") }
+
+    LaunchedEffect(Unit) {
+        if (id == null) return@LaunchedEffect
+        val data = viewModel.getPinjaman(id) ?: return@LaunchedEffect
+        nama = data.nama
+        total = data.total
+        bunga = data.bunga
+        selectedChoose = data.bulan
+
+    }
 
     Scaffold(
         topBar = {
@@ -84,8 +98,8 @@ fun BungaDetailScreen(navController: NavHostController, id: Long? = null){
         FormPinjaman(
             title = nama,
             onTitleChange = { nama = it },
-            lama = lama,
-            onLamaChange = { lama = it},
+            total = total,
+            onTotalChange = { total = it},
             bunga = bunga,
             onBungaChange = { bunga = it },
             selectedChoose = selectedChoose,
@@ -100,7 +114,7 @@ fun BungaDetailScreen(navController: NavHostController, id: Long? = null){
 @Composable
 fun FormPinjaman(
     title: String, onTitleChange: (String) -> Unit,
-    lama: String, onLamaChange: (String) -> Unit,
+    total: String, onTotalChange: (String) -> Unit,
     bunga: String, onBungaChange: (String) -> Unit,
     selectedChoose: String, selectedChooseChange: (String) -> Unit,
     modifier: Modifier
@@ -123,8 +137,8 @@ fun FormPinjaman(
             modifier = Modifier.fillMaxWidth()
         )
         OutlinedTextField(
-            value = lama,
-            onValueChange = { onLamaChange(it) },
+            value = total,
+            onValueChange = { onTotalChange(it) },
             label = { Text(text = stringResource(R.string.total_loan)) },
             singleLine = true,
             keyboardOptions = KeyboardOptions(
