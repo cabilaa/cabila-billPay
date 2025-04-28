@@ -6,7 +6,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.cabila0046.assessment1.Screen
-import com.cabila0046.assessment1.ui.MainScreen
+import com.cabila0046.assessment1.ui.screen.MainScreen
 import com.cabila0046.assessment1.ui.screen.AboutScreen
 
 @Composable

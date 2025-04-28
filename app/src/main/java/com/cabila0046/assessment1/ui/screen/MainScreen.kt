@@ -1,4 +1,4 @@
-package com.cabila0046.assessment1.ui
+package com.cabila0046.assessment1.ui.screen
 
 import android.content.Context
 import android.content.Intent
@@ -14,6 +14,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.outlined.List
 import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material3.Button
@@ -67,11 +68,21 @@ fun MainScreen(navController: NavHostController)  {
                         navController.navigate(Screen.About.route)
                     }) {
                         Icon(
+                            imageVector = Icons.AutoMirrored.Outlined.List,
+                            contentDescription = stringResource(R.string.about),
+                            tint = MaterialTheme.colorScheme.primary
+                        )
+                    }
+                    IconButton(onClick = {
+                        navController.navigate(Screen.About.route)
+                    }) {
+                        Icon(
                             imageVector = Icons.Outlined.Info,
                             contentDescription = stringResource(R.string.about),
                             tint = MaterialTheme.colorScheme.primary
                         )
                     }
+
                 }
             )
         }
@@ -127,7 +138,7 @@ fun ScreenContent(modifier: Modifier = Modifier) {
             onValueChange = { loan = it },
             label = { Text(text = stringResource(R.string.total_loan)) },
             trailingIcon = { IconPicker(loanError, "Rp") },
-            supportingText = { ErrorHint(loanError)},
+            supportingText = { ErrorHint(loanError) },
             isError = loanError,
             singleLine = true,
             keyboardOptions = KeyboardOptions(
@@ -141,7 +152,7 @@ fun ScreenContent(modifier: Modifier = Modifier) {
             onValueChange = { interest = it },
             label = { Text(text = stringResource(R.string.interest)) },
             trailingIcon = { IconPicker(interestError, " % ") },
-            supportingText = { ErrorHint(interestError)},
+            supportingText = { ErrorHint(interestError) },
             isError = interestError,
             singleLine = true,
             keyboardOptions = KeyboardOptions(
