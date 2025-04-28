@@ -27,7 +27,7 @@ fun SetupNavGraph(navController: NavHostController = rememberNavController()) {
             BungaScreen(navController)
         }
         composable(route = Screen.FormBaru.route) {
-            BungaDetailScreen()
+            BungaDetailScreen(navController)
         }
 
     }

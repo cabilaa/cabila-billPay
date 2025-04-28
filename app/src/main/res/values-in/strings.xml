@@ -34,11 +34,12 @@
     <string name="empty_list">belum ada data</string>
     <string name="click_on">%1$s di klik!</string>
     <string name="add_loan">tambah Pinjaman</string>
-    <string name="can_not">belum bisa tambah pinjaman</string>
     <string name="name">nama</string>
     <string name="total">jumlah Pinjaman</string>
     <string name="loan">Bunga Pinjaman</string>
     <string name="month">Lama Pinjaman</string>
+    <string name="save">Simpan</string>
+
 
 
 

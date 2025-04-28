@@ -45,7 +45,7 @@ import com.cabila0046.assessment1.ui.theme.Assessment1Theme
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun BungaScreen (navController: NavHostController)  {
-    val context = LocalContext.current
+
     Scaffold(
         topBar = {
             TopAppBar(
@@ -82,7 +82,7 @@ fun BungaScreen (navController: NavHostController)  {
         floatingActionButton = {
             FloatingActionButton(
                 onClick = {
-                    Toast.makeText(context, R.string.can_not, Toast.LENGTH_SHORT).show()
+                    navController.navigate(Screen.FormBaru.route)
                 }
             ) {
                 Icon(
