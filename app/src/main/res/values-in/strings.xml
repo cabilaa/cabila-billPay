@@ -33,6 +33,8 @@
     <string name="month_24">24 Bulan</string>
     <string name="empty_list">belum ada data</string>
     <string name="click_on">%1$s di klik!</string>
+    <string name="add_loan">tambah Pinjaman</string>
+    <string name="can_not">belum bisa tambah pinjaman</string>
 
 
 </resources>
