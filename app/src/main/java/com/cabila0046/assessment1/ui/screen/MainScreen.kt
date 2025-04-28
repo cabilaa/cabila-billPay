@@ -65,7 +65,7 @@ fun MainScreen(navController: NavHostController)  {
                 ),
                 actions = {
                     IconButton(onClick = {
-                        navController.navigate(Screen.About.route)
+                        navController.navigate(Screen.Bunga.route)
                     }) {
                         Icon(
                             imageVector = Icons.AutoMirrored.Outlined.List,

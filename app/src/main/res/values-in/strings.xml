@@ -31,5 +31,6 @@
     <string name="month_12">12 Bulan</string>
     <string name="month_18">18 Bulan</string>
     <string name="month_24">24 Bulan</string>
+    <string name="empty_list">belum ada data</string>
 
 </resources>
