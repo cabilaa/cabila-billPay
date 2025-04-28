@@ -8,6 +8,7 @@ import androidx.navigation.compose.rememberNavController
 import com.cabila0046.assessment1.Screen
 import com.cabila0046.assessment1.ui.screen.MainScreen
 import com.cabila0046.assessment1.ui.screen.AboutScreen
+import com.cabila0046.assessment1.ui.screen.BungaScreen
 
 @Composable
 fun SetupNavGraph(navController: NavHostController = rememberNavController()) {
@@ -20,6 +21,9 @@ fun SetupNavGraph(navController: NavHostController = rememberNavController()) {
         }
         composable(route = Screen.About.route) {
             AboutScreen(navController)
+        }
+        composable(route = Screen.Bunga.route) {
+            BungaScreen(navController)
         }
     }
 }

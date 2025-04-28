@@ -1,2 +1,128 @@
 package com.cabila0046.assessment1.ui.screen
 
+import android.content.res.Configuration
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.outlined.List
+import androidx.compose.material.icons.outlined.Info
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.HorizontalDivider
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarDefaults
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
+import com.cabila0046.assessment1.R
+import com.cabila0046.assessment1.Screen
+import com.cabila0046.assessment1.model.Pinjaman
+import com.cabila0046.assessment1.ui.theme.Assessment1Theme
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun BungaScreen (navController: NavHostController)  {
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = {
+                    Text(text = stringResource(id = R. string.app_name))
+                },
+                colors = TopAppBarDefaults.mediumTopAppBarColors(
+                    containerColor = MaterialTheme.colorScheme.primaryContainer,
+                    titleContentColor = MaterialTheme.colorScheme.primary,
+                ),
+                actions = {
+                    IconButton(onClick = {
+                        navController.navigate(Screen.About.route)
+                    }) {
+                        Icon(
+                            imageVector = Icons.AutoMirrored.Outlined.List,
+                            contentDescription = stringResource(R.string.about),
+                            tint = MaterialTheme.colorScheme.primary
+                        )
+                    }
+                    IconButton(onClick = {
+                        navController.navigate(Screen.About.route)
+                    }) {
+                        Icon(
+                            imageVector = Icons.Outlined.Info,
+                            contentDescription = stringResource(R.string.about),
+                            tint = MaterialTheme.colorScheme.primary
+                        )
+                    }
+
+                }
+            )
+        }
+    ) { innerPadding ->
+        BungaContent(Modifier.padding(innerPadding))
+    }
+}
+@Composable
+fun BungaContent(modifier: Modifier = Modifier) {
+    val viewModel: MainViewModel = viewModel()
+    val data = viewModel.data
+
+    LazyColumn(
+        modifier = modifier.fillMaxSize()
+    ) {
+        items(data) {
+            ListItem(pinjaman = it)
+            HorizontalDivider()
+        }
+    }
+}
+
+@Composable
+fun ListItem(pinjaman: Pinjaman) {
+    Column(
+        modifier = Modifier.fillMaxWidth().padding(16.dp),
+        verticalArrangement = Arrangement.spacedBy(8.dp)
+    ) {
+        Text(text = pinjaman.nama,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis,
+            fontWeight = FontWeight.Bold
+        )
+        Text(text = pinjaman.total,
+            maxLines = 2,
+            overflow = TextOverflow.Ellipsis
+        )
+        Text(text = pinjaman.bunga,
+            maxLines = 3,
+            overflow = TextOverflow.Ellipsis
+        )
+        Text(text = pinjaman.bulan,
+            maxLines = 4,
+            overflow = TextOverflow.Ellipsis
+        )
+        Text(text = pinjaman.tanggal)
+
+    }
+}
+
+@Preview(showBackground = true)
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, showBackground = true)
+@Composable
+fun BungaScreenPreview() {
+    Assessment1Theme {
+        BungaScreen(rememberNavController())
+    }
+}
