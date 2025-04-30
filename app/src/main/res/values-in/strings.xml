@@ -46,6 +46,9 @@
     <string name="delete_message">Hapus Pesan ini?</string>
     <string name="delete_button">Tombol Hapus</string>
     <string name="cancel_button">Tombol Batal</string>
+    <string name="list">Tampilan List</string>
+    <string name="grid">Tampilan Grid</string>
+
 
 
 
