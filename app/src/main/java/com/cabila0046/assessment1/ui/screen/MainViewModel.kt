@@ -1,30 +1,21 @@
 package com.cabila0046.assessment1.ui.screen
 
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import com.cabila0046.assessment1.database.PinjamanDao
 import com.cabila0046.assessment1.model.Pinjaman
+import kotlinx.coroutines.flow.SharingStarted
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.stateIn
 
-class MainViewModel : ViewModel() {
+class MainViewModel(dao: PinjamanDao) : ViewModel() {
 
-    val data = listOf(
-        Pinjaman(
-            1,
-            "cabila",
-            "10.000.000",
-            "2%",
-            "12 bulan",
-            "2025-05-03 12:24:43"
-        ),
-        Pinjaman(
-            2,
-            "vani",
-            "9.000.000",
-            "8%",
-            "6 bulan",
-            "2025-06-03 10:34:3"
-        )
-
+    val data: StateFlow<List<Pinjaman>> = dao.getPinjaman().stateIn(
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(),
+        initialValue = emptyList()
     )
     fun getPinjaman(id: Long): Pinjaman? {
-        return data.find { it.id == id }
+        return data.value.find { it.id == id }
     }
 }
