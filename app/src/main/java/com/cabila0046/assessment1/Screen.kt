@@ -8,7 +8,8 @@ sealed class Screen (val route: String){
     data object Bunga: Screen("bungaScreen")
     data object FormBaru: Screen("bungaDetailScreen")
     data object FormUbah: Screen("bungaDetailScreen/{$KEY_ID_PINJAMAN}") {
-        fun withId(id: Long) = "detailScreen/$id"
+        fun withId(id: Long) = "bungaDetailScreen/$id"
     }
 
 }
+

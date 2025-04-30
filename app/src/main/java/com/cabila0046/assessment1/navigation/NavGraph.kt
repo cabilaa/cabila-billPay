@@ -33,7 +33,7 @@ fun SetupNavGraph(navController: NavHostController = rememberNavController()) {
             BungaDetailScreen(navController)
         }
         composable(
-            route = Screen.FormBaru.route,
+            route = Screen.FormBaru.route + "/{$KEY_ID_PINJAMAN}}",
             arguments = listOf(
                 navArgument(KEY_ID_PINJAMAN) { type = NavType.LongType }
             )
@@ -41,6 +41,5 @@ fun SetupNavGraph(navController: NavHostController = rememberNavController()) {
             val id = navBackStackEntry.arguments?.getLong(KEY_ID_PINJAMAN)
             BungaDetailScreen(navController, id)
         }
-
     }
 }
