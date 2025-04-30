@@ -89,12 +89,14 @@ fun BungaDetailScreen(navController: NavHostController, id: Long? = null){
                 ),
                 actions = {
                     IconButton(onClick = {
-                        if (nama == "" || total == "" || bunga == "" || bunga == "") {
+                        if (nama == "" || total == "" || bunga == "" || selectedChoose == "") {
                             Toast.makeText(context, R.string.invalid, Toast.LENGTH_LONG).show()
                             return@IconButton
                         }
                         if (id == null) {
-                            viewModel.insert(nama, total, bunga, bunga)
+                            viewModel.insert(nama, total, bunga, selectedChoose)
+                        } else {
+                            viewModel.update(id, nama, total, bunga, selectedChoose )
                         }
                         navController.popBackStack()}) {
                         Icon(

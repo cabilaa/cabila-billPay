@@ -16,4 +16,7 @@ interface PinjamanDao {
 
     @Query("SELECT * FROM pinjaman ORDER BY tanggal DESC")
     fun getPinjaman(): Flow<List<Pinjaman>>
+
+    @Query("SELECT * FROM pinjaman WHERE id = :id")
+    suspend fun getPinjamanById(id: Long): Pinjaman?
 }
