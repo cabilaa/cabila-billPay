@@ -43,6 +43,9 @@
     <string name="invalid">Data tidak boleh kosong</string>
     <string name="other_options">Opsi Lainnya</string>
     <string name="delete">Hapus</string>
+    <string name="delete_message">Hapus Pesan ini?</string>
+    <string name="delete_button">Tombol Hapus</string>
+    <string name="cancel_button">Tombol Batal</string>
 
 
 

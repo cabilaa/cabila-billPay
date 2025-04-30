@@ -57,6 +57,7 @@ fun BungaDetailScreen(navController: NavHostController, id: Long? = null){
     var total by remember { mutableStateOf("") }
     var bunga by remember { mutableStateOf("") }
     var selectedChoose by remember { mutableStateOf("") }
+    var showDialog by remember { mutableStateOf(false) }
 
     LaunchedEffect(Unit) {
         if (id == null) return@LaunchedEffect
@@ -110,8 +111,7 @@ fun BungaDetailScreen(navController: NavHostController, id: Long? = null){
                     }
                     if (id != null) {
                         DeleteAction {
-                            viewModel.detele(id)
-                            navController.popBackStack()
+                            showDialog = true
                         }
                     }
                 }
@@ -129,9 +129,15 @@ fun BungaDetailScreen(navController: NavHostController, id: Long? = null){
             selectedChoose = selectedChoose,
             selectedChooseChange = { selectedChoose = it },
             modifier = Modifier.padding(padding)
-
-
         )
+        if (id != null && showDialog) {
+            DisplayDialog(
+                onDismissRequest = { showDialog = false }) {
+                showDialog = false
+                viewModel.detele(id)
+                navController.popBackStack()
+            }
+        }
     }
 }
 
