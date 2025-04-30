@@ -40,6 +40,8 @@ Fixed interest is a type of loan interest where the monthly amount remains const
     <string name="save">Save</string>
     <string name="edit_loan">Edit Loan</string>
     <string name="invalid">data cannot be empty</string>
+    <string name="other_options">Other Options</string>
+    <string name="delete">Delete</string>
 
 
 </resources>

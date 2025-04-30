@@ -33,7 +33,7 @@ fun SetupNavGraph(navController: NavHostController = rememberNavController()) {
             BungaDetailScreen(navController)
         }
         composable(
-            route = Screen.FormBaru.route + "/{$KEY_ID_PINJAMAN}}",
+            route = Screen.FormBaru.route + "/{$KEY_ID_PINJAMAN}",
             arguments = listOf(
                 navArgument(KEY_ID_PINJAMAN) { type = NavType.LongType }
             )
