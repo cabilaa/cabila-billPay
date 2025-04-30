@@ -52,12 +52,17 @@ import com.cabila0046.assessment1.R
 import com.cabila0046.assessment1.Screen
 import com.cabila0046.assessment1.model.Pinjaman
 import com.cabila0046.assessment1.ui.theme.Assessment1Theme
+import com.cabila0046.assessment1.util.SettingsDataStore
 import com.cabila0046.assessment1.util.ViewModelFactory
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun BungaScreen (navController: NavHostController)  {
-    var showList by remember { mutableStateOf(true) }
+    val dataStore = SettingsDataStore(LocalContext.current)
+    val showList by dataStore.layouFlow.collectAsState(true)
 
     Scaffold(
         topBar = {
@@ -70,7 +75,11 @@ fun BungaScreen (navController: NavHostController)  {
                     titleContentColor = MaterialTheme.colorScheme.primary,
                 ),
                 actions = {
-                    IconButton(onClick = { showList = !showList }) {
+                    IconButton(onClick = {
+                        CoroutineScope(Dispatchers.IO).launch {
+                            dataStore.saveLayout(!showList)
+                        }
+                    }) {
                         Icon(
                             painter = painterResource(
                                 if (showList) R.drawable.baseline_grid_view_24
