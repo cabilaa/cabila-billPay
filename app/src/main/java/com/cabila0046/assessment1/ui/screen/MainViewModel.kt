@@ -15,7 +15,5 @@ class MainViewModel(dao: PinjamanDao) : ViewModel() {
         started = SharingStarted.WhileSubscribed(),
         initialValue = emptyList()
     )
-    fun getPinjaman(id: Long): Pinjaman? {
-        return data.value.find { it.id == id }
-    }
+
 }

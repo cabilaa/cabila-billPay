@@ -6,7 +6,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "pinjaman")
 data class Pinjaman(
     @PrimaryKey(autoGenerate = true)
-    val id: Long,
+    val id: Long = 0L,
     val nama: String,
     val total: String,
     val bunga: String,
