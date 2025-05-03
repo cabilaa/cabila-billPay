@@ -27,10 +27,12 @@
     <string name="intro_app">Aplikasi ini membantu kita menghitung bunga pinjaman dengan cepat dan akurat</string>
     <string name="choose">Waktu Pinjaman</string>
     <string name="total_loan">Total Pinjaman</string>
+    <string name="month_3">3 Bulan</string>
     <string name="month_6">6 Bulan</string>
     <string name="month_12">12 Bulan</string>
     <string name="month_18">18 Bulan</string>
     <string name="month_24">24 Bulan</string>
+    <string name="month_36">36 Bulan</string>
     <string name="empty_list">belum ada data</string>
     <string name="click_on">%1$s di klik!</string>
     <string name="add_loan">tambah Pinjaman</string>

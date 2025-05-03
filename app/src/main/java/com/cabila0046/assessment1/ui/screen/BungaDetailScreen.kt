@@ -2,6 +2,7 @@ package com.cabila0046.assessment1.ui.screen
 
 import android.content.res.Configuration
 import android.widget.Toast
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -15,6 +16,8 @@ import androidx.compose.material.icons.outlined.Check
 import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.ExposedDropdownMenuBox
+import androidx.compose.material3.ExposedDropdownMenuDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -28,6 +31,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -53,11 +57,22 @@ fun BungaDetailScreen(navController: NavHostController, id: Long? = null){
     val factory = ViewModelFactory(context)
     val viewModel: DetailViewModel = viewModel(factory = factory)
 
+    val choose = listOf(
+        stringResource(R.string.month_3),
+        stringResource(R.string.month_6),
+        stringResource(R.string.month_12),
+        stringResource(R.string.month_18),
+        stringResource(R.string.month_24),
+        stringResource(R.string.month_36),
+
+    )
     var nama by remember { mutableStateOf("") }
     var total by remember { mutableStateOf("") }
     var bunga by remember { mutableStateOf("") }
     var selectedChoose by remember { mutableStateOf("") }
     var showDialog by remember { mutableStateOf(false) }
+
+    var expanded by rememberSaveable { mutableStateOf(false) }
 
     LaunchedEffect(Unit) {
         if (id == null) return@LaunchedEffect
@@ -128,6 +143,9 @@ fun BungaDetailScreen(navController: NavHostController, id: Long? = null){
             onBungaChange = { bunga = it },
             selectedChoose = selectedChoose,
             selectedChooseChange = { selectedChoose = it },
+            choose = choose,
+            expanded = expanded,
+            onExpandedChange = { expanded = it },
             modifier = Modifier.padding(padding)
         )
         if (id != null && showDialog) {
@@ -144,6 +162,7 @@ fun BungaDetailScreen(navController: NavHostController, id: Long? = null){
 @Composable
 fun DeleteAction(delete: () -> Unit) {
     var expanded by remember { mutableStateOf(false) }
+
 
     IconButton(onClick = { expanded = true}) {
         Icon(
@@ -168,13 +187,19 @@ fun DeleteAction(delete: () -> Unit) {
     }
 }
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FormPinjaman(
     title: String, onTitleChange: (String) -> Unit,
     total: String, onTotalChange: (String) -> Unit,
     bunga: String, onBungaChange: (String) -> Unit,
-    selectedChoose: String, selectedChooseChange: (String) -> Unit,
+    selectedChoose: String,
+    selectedChooseChange: (String) -> Unit,
+    choose: List<String>,
+    expanded: Boolean,
+    onExpandedChange: (Boolean) -> Unit,
     modifier: Modifier
+
 
 
 ) {
@@ -217,17 +242,36 @@ fun FormPinjaman(
             modifier = Modifier.fillMaxWidth()
 
         )
-        OutlinedTextField(
-        value = selectedChoose,
-        onValueChange = { selectedChooseChange(it) },
-        label = { Text(text = stringResource(R.string.month)) },
-        singleLine = true,
-        keyboardOptions = KeyboardOptions(
-            capitalization = KeyboardCapitalization.Words,
-            imeAction = ImeAction.Next
-        ),
-        modifier = Modifier.fillMaxWidth()
-        )
+        ExposedDropdownMenuBox(
+            expanded = expanded,
+            onExpandedChange = { onExpandedChange(!expanded) }
+        ) {
+            OutlinedTextField(
+                value = selectedChoose,
+                onValueChange = {},
+                readOnly = true,
+                label = { Text(stringResource(R.string.choose)) },
+                trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = expanded) },
+                modifier = Modifier
+                    .menuAnchor()
+                    .fillMaxWidth()
+                    .clickable { onExpandedChange(true) }
+            )
+            ExposedDropdownMenu(
+                expanded = expanded,
+                onDismissRequest = { onExpandedChange(false) }
+            ) {
+                choose.forEach { option ->
+                    DropdownMenuItem(
+                        text = { Text(option) },
+                        onClick = {
+                            selectedChooseChange(option)
+                            onExpandedChange(false)
+                        }
+                    )
+                }
+            }
+        }
     }
 }
 
