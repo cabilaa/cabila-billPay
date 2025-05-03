@@ -46,7 +46,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.cabila0046.assessment1.R
-import com.cabila0046.assessment1.Screen
+import com.cabila0046.assessment1.navigation.Screen
 import com.cabila0046.assessment1.ui.theme.Assessment1Theme
 
 

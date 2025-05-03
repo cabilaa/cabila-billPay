@@ -11,24 +11,27 @@ import com.cabila0046.assessment1.R
 import com.cabila0046.assessment1.ui.theme.Assessment1Theme
 
 @Composable
-fun DisplayDialog(
+fun DisplayAlertDialog(
+    openDialog: Boolean,
     onDismissRequest: () -> Unit,
     onConfirmation: () -> Unit
 ) {
-    AlertDialog(
-        text = { Text(text = stringResource(R.string.delete_message)) },
-        confirmButton = {
-            TextButton(onClick = { onConfirmation() }) {
-                Text(text = stringResource(R.string.delete_button))
-            }
-        },
-        dismissButton = {
-            TextButton(onClick = { onDismissRequest() }) {
-                Text(text = stringResource(R.string.cancel_button))
-            }
-        },
-        onDismissRequest = { onDismissRequest()}
-    )
+    if (openDialog){
+        AlertDialog(
+            text = { Text(text = stringResource(R.string.delete_message)) },
+            confirmButton = {
+                TextButton(onClick = { onConfirmation() }) {
+                    Text(text = stringResource(R.string.delete_button))
+                }
+            },
+            dismissButton = {
+                TextButton(onClick = { onDismissRequest() }) {
+                    Text(text = stringResource(R.string.cancel_button))
+                }
+            },
+            onDismissRequest = { onDismissRequest()}
+        )
+    }
 }
 
 @Preview(showBackground = true)
@@ -36,7 +39,8 @@ fun DisplayDialog(
 @Composable
 fun DialogPreview() {
     Assessment1Theme {
-        DisplayDialog(
+        DisplayAlertDialog(
+            openDialog = true,
             onDismissRequest = {},
             onConfirmation = {}
         )

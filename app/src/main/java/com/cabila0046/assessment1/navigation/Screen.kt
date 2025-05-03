@@ -1,4 +1,4 @@
-package com.cabila0046.assessment1
+package com.cabila0046.assessment1.navigation
 
 import com.cabila0046.assessment1.ui.screen.KEY_ID_PINJAMAN
 
@@ -10,6 +10,7 @@ sealed class Screen (val route: String){
     data object FormUbah: Screen("bungaDetailScreen/{$KEY_ID_PINJAMAN}") {
         fun withId(id: Long) = "bungaDetailScreen/$id"
     }
+    data object RecycleBin: Screen("recycleBinScreen")
 
 }
 

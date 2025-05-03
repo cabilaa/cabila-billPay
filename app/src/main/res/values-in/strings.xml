@@ -46,10 +46,16 @@
     <string name="other_options">Opsi Lainnya</string>
     <string name="delete">Hapus</string>
     <string name="delete_message">Hapus Pesan ini?</string>
-    <string name="delete_button">Tombol Hapus</string>
-    <string name="cancel_button">Tombol Batal</string>
+    <string name="delete_button">Hapus</string>
+    <string name="cancel_button">Batal</string>
     <string name="list">Tampilan List</string>
     <string name="grid">Tampilan Grid</string>
+    <string name="restore">Pulihkan</string>
+    <string name="ask_recycle">pulihkan atau hapus data ini?</string>
+    <string name="undo_button">pulihkan</string>
+    <string name="recycle">Baru saja dihapus</string>
+
+
 
 
 

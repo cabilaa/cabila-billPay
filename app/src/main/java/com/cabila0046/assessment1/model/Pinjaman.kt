@@ -11,5 +11,6 @@ data class Pinjaman(
     val total: String,
     val bunga: String,
     val bulan: String,
-    val tanggal: String
+    val tanggal: String,
+    val dihapus: Boolean = false
 )

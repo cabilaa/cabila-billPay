@@ -45,6 +45,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.cabila0046.assessment1.R
+import com.cabila0046.assessment1.navigation.Screen
 import com.cabila0046.assessment1.ui.theme.Assessment1Theme
 import com.cabila0046.assessment1.util.ViewModelFactory
 
@@ -125,9 +126,17 @@ fun BungaDetailScreen(navController: NavHostController, id: Long? = null){
                         )
                     }
                     if (id != null) {
-                        DeleteAction {
-                            showDialog = true
-                        }
+                        DeleteAction { showDialog = true }
+                        DisplayAlertDialog(
+                            openDialog = showDialog,
+                            onDismissRequest = {showDialog = false },
+                            onConfirmation = {
+                                showDialog = false
+                                viewModel.softDelete(id)
+                                navController.navigate(Screen.Bunga.route)
+                            }
+
+                        )
                     }
                 }
 
@@ -148,14 +157,6 @@ fun BungaDetailScreen(navController: NavHostController, id: Long? = null){
             onExpandedChange = { expanded = it },
             modifier = Modifier.padding(padding)
         )
-        if (id != null && showDialog) {
-            DisplayDialog(
-                onDismissRequest = { showDialog = false }) {
-                showDialog = false
-                viewModel.detele(id)
-                navController.popBackStack()
-            }
-        }
     }
 }
 
@@ -199,9 +200,6 @@ fun FormPinjaman(
     expanded: Boolean,
     onExpandedChange: (Boolean) -> Unit,
     modifier: Modifier
-
-
-
 ) {
     Column(
         modifier = modifier.fillMaxSize().padding(16.dp),

@@ -7,12 +7,12 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
-import com.cabila0046.assessment1.Screen
 import com.cabila0046.assessment1.ui.screen.MainScreen
 import com.cabila0046.assessment1.ui.screen.AboutScreen
 import com.cabila0046.assessment1.ui.screen.BungaDetailScreen
 import com.cabila0046.assessment1.ui.screen.BungaScreen
 import com.cabila0046.assessment1.ui.screen.KEY_ID_PINJAMAN
+import com.cabila0046.assessment1.ui.screen.RecycleBinScreen
 
 @Composable
 fun SetupNavGraph(navController: NavHostController = rememberNavController()) {
@@ -41,5 +41,9 @@ fun SetupNavGraph(navController: NavHostController = rememberNavController()) {
             val id = navBackStackEntry.arguments?.getLong(KEY_ID_PINJAMAN)
             BungaDetailScreen(navController, id)
         }
+        composable(route = Screen.RecycleBin.route)
+        {
+            RecycleBinScreen(navController)
+    }
     }
 }

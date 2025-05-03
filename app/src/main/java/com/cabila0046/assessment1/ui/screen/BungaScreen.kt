@@ -16,6 +16,7 @@ import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridCells
 import androidx.compose.foundation.lazy.staggeredgrid.items
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.outlined.Delete
 import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -46,7 +47,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.cabila0046.assessment1.R
-import com.cabila0046.assessment1.Screen
+import com.cabila0046.assessment1.navigation.Screen
 import com.cabila0046.assessment1.model.Pinjaman
 import com.cabila0046.assessment1.ui.theme.Assessment1Theme
 import com.cabila0046.assessment1.util.SettingsDataStore
@@ -90,11 +91,11 @@ fun BungaScreen (navController: NavHostController)  {
                         )
                     }
                     IconButton(onClick = {
-                        navController.navigate(Screen.About.route)
+                        navController.navigate(Screen.RecycleBin.route)
                     }) {
                         Icon(
-                            imageVector = Icons.Outlined.Info,
-                            contentDescription = stringResource(R.string.about),
+                            imageVector = Icons.Outlined.Delete,
+                            contentDescription = stringResource(R.string.back),
                             tint = MaterialTheme.colorScheme.primary
                         )
                     }
