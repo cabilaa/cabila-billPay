@@ -14,7 +14,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.outlined.List
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Warning
 import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material3.Button
@@ -68,7 +68,7 @@ fun MainScreen(navController: NavHostController)  {
                         navController.navigate(Screen.Bunga.route)
                     }) {
                         Icon(
-                            imageVector = Icons.AutoMirrored.Outlined.List,
+                            imageVector = Icons.Filled.Add,
                             contentDescription = stringResource(R.string.about),
                             tint = MaterialTheme.colorScheme.primary
                         )

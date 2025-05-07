@@ -7,7 +7,7 @@
     <string name="intro_app">Aplikasi ini membantu kita menghitung bunga pinjaman dengan cepat dan akurat</string>
     <string name="about">Info Aplikasi</string>
     <string name="other">Lainnya</string>
-
+    <string name="data">Data billPay</string>
     <string name="copyright">Bill Pay adalah aplikasi yang dirancang untuk menghitung bunga tetap (flat rate).
         Bunga tetap adalah jenis bunga pinjaman di mana jumlah bulanan tetap konstan dan tidak berubah sepanjang periode pinjaman. \n\n
         Rumus yang Digunakan:\n

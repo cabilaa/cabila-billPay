@@ -221,6 +221,9 @@ fun FormPinjaman(
             onValueChange = { onTotalChange(it) },
             label = { Text(text = stringResource(R.string.total_loan)) },
             singleLine = true,
+            trailingIcon = {
+                Text(text = "Rp", style = MaterialTheme.typography.labelLarge)
+            },
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Number,
                 imeAction = ImeAction.Next
@@ -232,10 +235,14 @@ fun FormPinjaman(
             onValueChange = { onBungaChange(it) },
             label = { Text(text = stringResource(R.string.loan)) },
             singleLine = true,
+            trailingIcon = {
+                Text(text = "%", style = MaterialTheme.typography.labelLarge)
+            },
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Number,
                 imeAction = ImeAction.Next
             )
+
             ,
             modifier = Modifier.fillMaxWidth()
 

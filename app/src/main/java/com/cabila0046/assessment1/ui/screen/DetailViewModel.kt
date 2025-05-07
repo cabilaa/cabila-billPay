@@ -44,11 +44,6 @@ class DetailViewModel(private val dao: PinjamanDao): ViewModel() {
             dao.update(pinjaman)
         }
     }
-    fun detele(id: Long) {
-        viewModelScope.launch(Dispatchers.IO) {
-            dao.softDeleteById(id)
-        }
-    }
     fun softDelete(id: Long) {
         viewModelScope.launch(Dispatchers.IO) {
             dao.softDeleteById(id)
