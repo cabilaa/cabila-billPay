@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <!-- Info Aplikasi -->
     <string name="app_name">billPay</string>
+    <string name="caption">Aplikasi Bunga Pinjaman</string>
+    <string name="intro_app">Aplikasi ini membantu kita menghitung bunga pinjaman dengan cepat dan akurat</string>
+    <string name="about">Info Aplikasi</string>
     <string name="other">Lainnya</string>
-    <string name="count">"Hitung "</string>
+
     <string name="copyright">Bill Pay adalah aplikasi yang dirancang untuk menghitung bunga tetap (flat rate).
         Bunga tetap adalah jenis bunga pinjaman di mana jumlah bulanan tetap konstan dan tidak berubah sepanjang periode pinjaman. \n\n
         Rumus yang Digunakan:\n
@@ -11,53 +16,62 @@
         Total Hutang = Pinjaman + Total Bunga\n\n
         Aplikasi ini dikembangkan untuk Assessment1 Mata Kuliah Pemrograman Mobile.\n
         Hak Cipta © 2024-2025 cabila.\n Seluruh hak cipta dilindungi.</string>
-    <string name="back">Kembali</string>
-    <string name="reset">Atur Ulang</string>
-    <string name="about">Info Aplikasi</string>
-    <string name="caption">Aplikasi Bunga Pinjaman</string>
-    <string name="input_invalid">Tidak boleh kosong</string>
-    <string name="share">Bagikan</string>
+
+
+    <!-- Template Bagikan -->
     <string name="share_template">
         Bunga Bulanan    :Rp %1$s \n
         Total Bunga      :Rp %2$s \n
         Total Pembayaran :Rp %3$s \n
         Durasi Pembayaran:Rp %4$s bulan</string>
-    <string name="loan_duration">Durasi Pinjaman</string>
-    <string name="interest">Bunga Pinjaman</string>
-    <string name="intro_app">Aplikasi ini membantu kita menghitung bunga pinjaman dengan cepat dan akurat</string>
-    <string name="choose">Waktu Pinjaman</string>
-    <string name="total_loan">Total Pinjaman</string>
+
+
+    <!-- Dropdown Bulan -->
     <string name="month_3">3 Bulan</string>
     <string name="month_6">6 Bulan</string>
     <string name="month_12">12 Bulan</string>
     <string name="month_18">18 Bulan</string>
     <string name="month_24">24 Bulan</string>
     <string name="month_36">36 Bulan</string>
+
+    <!-- Aksi Pengguna -->
+    <string name="add_loan">tambah Pinjaman</string>
+    <string name="edit_loan">Edit Pinjaman</string>
+    <string name="other_options">Opsi Lainnya</string>
+    <string name="delete">Hapus</string>
+    <string name="delete_button">Hapus</string>
+    <string name="cancel_button">Batal</string>
+    <string name="back">Kembali</string>
+    <string name="reset">Atur Ulang</string>
+    <string name="share">Bagikan</string>
+    <string name="restore">Pulihkan</string>
+    <string name="undo_button">pulihkan</string>
+
+
+    <!-- Tampilan UI -->
+    <string name="list">Tampilan List</string>
+    <string name="grid">Tampilan Grid</string>
+
+    <!-- Notifikasi & Validasi -->
+    <string name="input_invalid">Tidak boleh kosong</string>
+    <string name="invalid">Data tidak boleh kosong</string>
+    <string name="recycle">Baru saja dihapus</string>
+    <string name="delete_message">Hapus Pesan ini?</string>
     <string name="empty_list">belum ada data</string>
     <string name="click_on">%1$s di klik!</string>
-    <string name="add_loan">tambah Pinjaman</string>
+    <string name="ask_recycle">pulihkan atau hapus data ini?</string>
+
+    <!-- Formulir Pinjaman -->
     <string name="name">nama</string>
     <string name="total">jumlah Pinjaman</string>
     <string name="loan">Bunga Pinjaman</string>
     <string name="month">Lama Pinjaman</string>
     <string name="save">Simpan</string>
-    <string name="edit_loan">Edit Pinjaman</string>
-    <string name="invalid">Data tidak boleh kosong</string>
-    <string name="other_options">Opsi Lainnya</string>
-    <string name="delete">Hapus</string>
-    <string name="delete_message">Hapus Pesan ini?</string>
-    <string name="delete_button">Hapus</string>
-    <string name="cancel_button">Batal</string>
-    <string name="list">Tampilan List</string>
-    <string name="grid">Tampilan Grid</string>
-    <string name="restore">Pulihkan</string>
-    <string name="ask_recycle">pulihkan atau hapus data ini?</string>
-    <string name="undo_button">pulihkan</string>
-    <string name="recycle">Baru saja dihapus</string>
-
-
-
-
+    <string name="loan_duration">Durasi Pinjaman</string>
+    <string name="interest">Bunga Pinjaman</string>
+    <string name="choose">Waktu Pinjaman</string>
+    <string name="total_loan">Total Pinjaman</string>
+    <string name="count">Hitung</string>
 
 
 

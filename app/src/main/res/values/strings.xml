@@ -1,58 +1,85 @@
 <resources>
+
+    <!-- App Info -->
     <string name="app_name">billPay</string>
+    <string name="caption">Loan Interest App </string>
     <string name="intro_app">This app helps you calculate loan interest quickly and accurately</string>
+    <string name="about">App Info</string>
+    <string name="copyright">Bill Pay is an application designed to calculate fixed interest (flat rate).
+        Fixed interest is a type of loan interest where the monthly amount remains constant and does not change throughout the loan period.\n\n
+        Formula Used:\n
+        Monthly Interest = Loan × (Interest / 100)\n
+        Total Interest = Monthly Interest × Duration\n
+        Total Debt = Loan + Total Interest\n\n
+        This application was developed for Assessment 1 of Mobile Programming.\n
+        Copyright © 2024-2025 cabila.\n All rights reserved.</string>
+
+    <!-- Loan Form -->
+    <string name="name">name</string>
+    <string name="total">total loan</string>
+    <string name="loan">loan interest</string>
+    <string name="month">loan tearm</string>
     <string name="loan_duration">Loan Duration</string>
     <string name="interest">Loan Interest Percentage</string>
+    <string name="choose">Loan Tearm</string>
+    <string name="total_loan">Total Loan</string>
+    <string name="other">other</string>
+    <string name="other_options">Other Options</string>
+    <string name="count">Calculate</string>
+
+    <!-- Duration Options -->
+    <string name="month_3">3 months</string>
     <string name="month_6">6 months</string>
     <string name="month_12">12 months</string>
     <string name="month_18">18 months</string>
     <string name="month_24">24 months</string>
-    <string name="other">other</string>
-    <string name="count">Calculate</string>
-    <string name="input_invalid">Cannot be empty</string>
+    <string name="month_36">36 months</string>
+
+    <!-- Actions -->
+    <string name="save">Save</string>
+    <string name="back">Return</string>
+    <string name="reset">Reset</string>
     <string name="share">Share</string>
+    <string name="add_loan">Add Loan</string>
+    <string name="edit_loan">Edit Loan</string>
+    <string name="delete">Delete</string>
+    <string name="delete_message">delete this message?</string>
+    <string name="delete_button">Delete Button</string>
+    <string name="cancel_button">Cancel Button</string>
+    <string name="restore">Restore</string>
+    <string name="undo_button">Recover</string>
+
+    <!-- UI & Views -->
+    <string name="list">List View</string>
+    <string name="grid">Grid View</string>
+
+    <!-- Validation & Notifications -->
+    <string name="input_invalid">Cannot be empty</string>
+    <string name="empty_list">no data yet</string>
+    <string name="click_on">%1$s click on!</string>
+    <string name="invalid">data cannot be empty</string>
+    <string name="ask_recycle">restore or delete this data?</string>
+    <string name="recycle">just deleted</string>
+
+    <!-- Share Template -->
     <string name="share_template">
         Monthly Interest:Rp %1$s \n
         Total Interest  :Rp %2$s \n
         Total Payment   :Rp %3$s \n
         Payment Duration:Rp %4$s months</string>
-   <string name="about">App Info</string>
-    <string name="caption">Loan Interest App </string>
-   <string name="copyright">Bill Pay is an application designed to calculate fixed interest (flat rate).
-Fixed interest is a type of loan interest where the monthly amount remains constant and does not change throughout the loan period.\n\n
-       Formula Used:\n
-       Monthly Interest = Loan × (Interest / 100)\n
-        Total Interest = Monthly Interest × Duration\n
-        Total Debt = Loan + Total Interest\n\n
-        This application was developed for Assessment 1 of Mobile Programming.\n
-        Copyright © 2024-2025 cabila.\n All rights reserved.</string>
-   <string name="back">Return</string>
-   <string name="reset">Reset</string>
-    <string name="choose">Loan Tearm</string>
-    <string name="total_loan">Total Loan</string>
-    <string name="empty_list">no data yet</string>
-    <string name="click_on">%1$s click on!</string>
-    <string name="add_loan">Add Loan</string>
-    <string name="name">name</string>
-    <string name="loan">loan interest</string>
-    <string name="month">loan tearm</string>
-    <string name="total">total loan</string>
-    <string name="save">Save</string>
-    <string name="edit_loan">Edit Loan</string>
-    <string name="invalid">data cannot be empty</string>
-    <string name="other_options">Other Options</string>
-    <string name="delete">Delete</string>
-    <string name="delete_message">delete this message?</string>
-    <string name="delete_button">Delete Button</string>
-    <string name="cancel_button">Cancel Button</string>
-    <string name="list">List View</string>
-    <string name="grid">Grid View</string>
-    <string name="month_3">3 months</string>
-    <string name="month_36">36 months</string>
-    <string name="restore">Restore</string>
-    <string name="ask_recycle">restore or delete this data?</string>
-    <string name="undo_button">Recover</string>
-    <string name="recycle">just deleted</string>
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 </resources>

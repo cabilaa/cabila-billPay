@@ -61,10 +61,6 @@ fun RecycleBinScreen(navController: NavHostController)  {
                     containerColor = MaterialTheme.colorScheme.primaryContainer,
                     titleContentColor = MaterialTheme.colorScheme.primary,
                 ),
-
-
-
-
             )
         }
     ) { innerPadding ->
