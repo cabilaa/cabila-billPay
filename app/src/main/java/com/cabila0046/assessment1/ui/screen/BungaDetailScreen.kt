@@ -65,8 +65,8 @@ fun BungaDetailScreen(navController: NavHostController, id: Long? = null){
         stringResource(R.string.month_18),
         stringResource(R.string.month_24),
         stringResource(R.string.month_36),
-
     )
+
     var nama by remember { mutableStateOf("") }
     var total by remember { mutableStateOf("") }
     var bunga by remember { mutableStateOf("") }
@@ -82,9 +82,7 @@ fun BungaDetailScreen(navController: NavHostController, id: Long? = null){
         total = data.total
         bunga = data.bunga
         selectedChoose = data.bulan
-
     }
-
     Scaffold(
         topBar = {
             TopAppBar(
@@ -139,7 +137,6 @@ fun BungaDetailScreen(navController: NavHostController, id: Long? = null){
                         )
                     }
                 }
-
             )
         }
     ) { padding ->
@@ -279,7 +276,6 @@ fun FormPinjaman(
         }
     }
 }
-
 
 @Preview(showBackground = true)
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, showBackground = true)

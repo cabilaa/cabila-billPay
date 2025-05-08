@@ -147,7 +147,6 @@ fun BungaContent(showList: Boolean, modifier: Modifier = Modifier, navController
         {
             Text(text = stringResource(id = R.string.empty_list))
         }
-
     }
     else {
             if (showList) {
@@ -177,7 +176,7 @@ fun BungaContent(showList: Boolean, modifier: Modifier = Modifier, navController
                     }
                 }
             }
-            }
+        }
     }
 }
 
@@ -244,7 +243,6 @@ fun GridItem(pinjaman: Pinjaman, onClick: () -> Unit) {
                 overflow = TextOverflow.Ellipsis
             )
             Text(text = pinjaman.tanggal)
-
         }
     }
 }

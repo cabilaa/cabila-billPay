@@ -41,7 +41,7 @@
     <string name="back">Return</string>
     <string name="reset">Reset</string>
     <string name="share">Share</string>
-    <string name="add_loan">Add Loan</string>
+    <string name="add_loan">Add Loan Data</string>
     <string name="edit_loan">Edit Loan</string>
     <string name="delete">Delete</string>
     <string name="delete_message">delete this message?</string>

@@ -25,15 +25,11 @@ class MainViewModel(private val dao: PinjamanDao) : ViewModel() {
     fun deletePermanent(id: Long){
         viewModelScope.launch(Dispatchers.IO) {
             dao.deleteById(id)
-
         }
     }
-
     val deletedData: StateFlow<List<Pinjaman>> = dao.getPinjamanDihapus().stateIn(
         scope = viewModelScope,
         started = SharingStarted.WhileSubscribed(),
         initialValue = emptyList()
     )
-
-
 }

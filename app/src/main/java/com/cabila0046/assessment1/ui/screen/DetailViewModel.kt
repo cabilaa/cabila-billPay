@@ -25,7 +25,6 @@ class DetailViewModel(private val dao: PinjamanDao): ViewModel() {
         viewModelScope.launch(Dispatchers.IO) {
             dao.insert(pinjaman)
         }
-
     }
     suspend fun getPinjaman(id: Long): Pinjaman? {
         return dao.getPinjamanById(id)
@@ -49,7 +48,4 @@ class DetailViewModel(private val dao: PinjamanDao): ViewModel() {
             dao.softDeleteById(id)
         }
     }
-
-
-
 }

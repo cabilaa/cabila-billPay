@@ -82,7 +82,6 @@ fun MainScreen(navController: NavHostController)  {
                             tint = MaterialTheme.colorScheme.primary
                         )
                     }
-
                 }
             )
         }
@@ -113,8 +112,6 @@ fun ScreenContent(modifier: Modifier = Modifier) {
     var custom by rememberSaveable { mutableStateOf("") }
     var customError by rememberSaveable { mutableStateOf(false) }
     val isOther = selectedChoose == stringResource(R.string.other)
-
-
 
     var expanded by rememberSaveable { mutableStateOf(false) }
     var resultText by rememberSaveable { mutableStateOf("") }
